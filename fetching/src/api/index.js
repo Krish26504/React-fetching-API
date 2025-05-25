@@ -1,8 +1,6 @@
 export const getPosts = async () => {
-    const response = await fetch("https://dummyjson.com/users?limit=50&skip=0 ", {
-      method: "GET",
-    });
-  
-    return await response.json();
+    const response = await fetch("https://jsonplaceholder.typicode.com/posts");
+    const data = await response.json();
+    return data; 
   };
   

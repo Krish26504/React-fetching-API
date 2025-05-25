@@ -11,8 +11,8 @@ getPosts().then(posts => setData(posts));
 }, []);
   return (
     <div className= "App">
-      {data ? data.map((e)=><Products />): <p>No Data</p>}
-      {data ? data.map((e)=><Recipies />): <p>No Data</p>}
+      {data ? data.map((e)=><Products title ={e.title} body = {e.body} />): <p>No Data</p>}
+      {data ? data.map((e)=><Recipies title ={e.title} body = {e.body} />): <p>No Data</p>}
     </div>
   );
 };
