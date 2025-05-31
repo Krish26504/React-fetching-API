@@ -1,22 +1,31 @@
-function Products({ title, body }) {
+import { Link } from "react-router-dom";
+import ShowMoreText from "react-show-more-text";
+
+function Products({ id, title, description, image, price }) {
   return (
     <div className="product-card">
-      <img
-        src="https://via.placeholder.com/100"
-        alt={title}
-        className="product-image"
-      />
+      <Link to={`/products/${id}`}>
+        <img src={image} alt={title} className="product-image" />
+      </Link>
       <h3 className="product-title">{title}</h3>
-      <p className="product-desc">
-        {body.length > 80 ? body.slice(0, 80) + " ... " : body}
-        <span className="show-more">Show More</span>
-      </p>
-      <div className="product-price">₹99</div>
+      <ShowMoreText
+        lines={3}
+        more="Show more"
+        less="Show less"
+        className="product-desc"
+        anchorClass="show-more-link"
+        expanded={false}
+        width={0}
+      >
+        {description}
+      </ShowMoreText>
+      <div className="product-price">₹{price}</div>
       <div className="product-actions">
-        <button className="add-btn">Add to Cart</button>
-        <button className="remove-btn">Remove</button>
+        <Link to={`/products/${id}`}>
+          <button className="add-btn">View Details</button>
+        </Link>
       </div>
     </div>
   );
 }
-export default Products
+export default Products;
